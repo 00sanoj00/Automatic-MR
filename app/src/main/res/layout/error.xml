@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/white"
+    xmlns:autofit="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_red_dark"
+        android:layout_width="@dimen/_260sdp"
+        android:textSize="@dimen/_25sdp"
+        android:layout_height="wrap_content"
+        android:text="Oops !" />
+
+
+    <TextView
+        android:id="@+id/viewrmsg"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:textColor="@android:color/black"
+        android:maxLines="7"
+        android:text=""
+        android:gravity="center"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:textSize="@dimen/_18sdp"
+        />
+    <Button
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_okay"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_red_dark"
+        android:text="Automatc Close App 10 Sec"/>
+
+
+
+</LinearLayout>

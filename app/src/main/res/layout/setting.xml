@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/white"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_red_dark"
+        android:layout_width="@dimen/_260sdp"
+        android:textSize="@dimen/_15sdp"
+        android:layout_height="wrap_content"
+        android:text="SETTING" />
+
+
+
+
+    <TextView
+
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_red_dark"
+        android:layout_width="@dimen/_260sdp"
+        android:textSize="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+        android:text="SIM 1 SETTING" />
+
+
+
+    <TextView
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="Authorization [SIM 1]"
+        android:textSize="@dimen/_10sdp"></TextView>
+
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColorHint="#F19898"
+        android:textSize="@dimen/_10sdp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:theme="@style/MyEditTextTheme"
+        android:hint="Enter Authorization [SIM 1]"
+        android:inputType="textPersonName" />
+
+
+
+    <TextView
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="URL [SIM 1]"
+        android:textSize="@dimen/_10sdp"></TextView>
+
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@android:color/black"
+        android:textColorHint="#F19898"
+        android:textSize="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:theme="@style/MyEditTextTheme"
+        android:hint="Enter URL [SIM 1]"
+        android:inputType="textPersonName" />
+
+
+
+    <TextView
+        android:id="@+id/yone"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_red_dark"
+        android:layout_width="@dimen/_260sdp"
+        android:textSize="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+        android:text="SIM 2 SETTING" />
+
+
+
+    <TextView
+        android:id="@+id/ytow"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="Authorization [SIM 2]"
+        android:textSize="@dimen/_10sdp"></TextView>
+
+
+    <EditText
+        android:id="@+id/editText1SIM2"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@android:color/black"
+        android:textColorHint="#F19898"
+        android:textSize="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:theme="@style/MyEditTextTheme"
+        android:hint="Enter Authorization [SIM 2]"
+        android:inputType="textPersonName" />
+
+
+
+    <TextView
+        android:id="@+id/ytree"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="URL [SIM 2]"
+        android:textSize="@dimen/_10sdp"></TextView>
+
+
+    <EditText
+        android:id="@+id/editText2SIM2"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:textColorHint="#F19898"
+        android:textSize="@dimen/_10sdp"
+        android:theme="@style/MyEditTextTheme"
+        android:hint="Enter URL [SIM 2]"
+        android:inputType="textPersonName" />
+
+
+    <TextView
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_red_dark"
+        android:layout_width="@dimen/_260sdp"
+        android:textSize="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+        android:text="TIMER SETTING &amp; DEVICES" />
+
+
+    <TextView
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="Repeat Time [SIM 1] &amp; [SIM 2]"
+        android:textSize="@dimen/_10sdp"></TextView>
+
+
+
+
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColorHint="#F19898"
+        android:textSize="@dimen/_10sdp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:theme="@style/MyEditTextTheme"
+        android:hint="Recomend 200+"
+        android:inputType="textPersonName" />
+
+
+
+    <TextView
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="Android Devices"
+        android:textSize="@dimen/_10sdp"></TextView>
+
+
+
+
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@android:color/black"
+        android:textColorHint="#F19898"
+        android:textSize="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:theme="@style/MyEditTextTheme"
+        android:hint="Devices"
+        android:inputType="textPersonName" />
+
+    <CheckBox
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_red_dark"
+        android:id="@+id/checkBox"
+        android:textSize="@dimen/_10sdp"
+        android:checked="true"
+        android:theme="@style/CustomAppTheme"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:text="Dual Sim Service Enable" />
+
+
+    <Button
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:id="@+id/btn_okay"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_red_dark"
+        android:text="Save"/>
+
+
+
+
+</LinearLayout>

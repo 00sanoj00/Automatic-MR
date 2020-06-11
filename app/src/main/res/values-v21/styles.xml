@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="sflash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor" tools:ignore="NewApi">@android:color/white</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@android:color/white</item>
+    </style>
+
+    <style name="sflash2" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor" tools:ignore="NewApi">@android:color/holo_red_dark</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@android:color/holo_red_dark</item>
+    </style>
+</resources>
