@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#F8EEEE"
+    android:id="@+id/mainlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
@@ -50,12 +51,21 @@
                 android:layout_alignParentLeft="true"
                 android:textColor="@android:color/black"/>
 
+            <com.jtv7.rippleswitchlib.RippleSwitch
+                android:id="@+id/rippleSwitch"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                app:rs_checked_color="@android:color/holo_red_dark"
+                app:rs_unchecked_color="@android:color/darker_gray"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_25sdp"/>
+
 
             <Button
                 android:id="@+id/setting"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_37sdp"
                 android:layout_centerVertical="true"
                 android:layout_height="@dimen/_25sdp"
                 android:background="@drawable/ic_settings"/>
@@ -64,19 +74,11 @@
                 android:id="@+id/stopservice"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/_35sdp"
+                android:layout_marginRight="@dimen/_65sdp"
                 android:visibility="gone"
                 android:layout_centerVertical="true"
                 android:layout_height="@dimen/_25sdp"
                 android:background="@drawable/ic_stop"/>
-
-
-
-
-
-
-
-
 
 
         </RelativeLayout>
@@ -106,8 +108,20 @@
             android:orientation="horizontal">
 
 
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:textSize="@dimen/_8sdp"
+                android:textColor="@android:color/holo_red_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@android:color/holo_red_dark"
+                android:text="Allways Screen ON" />
+
             <TextView
                 android:textSize="@dimen/_8sdp"
+                android:id="@+id/lable01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/holo_red_dark"
@@ -119,6 +133,7 @@
 
             <TextView
                 android:textSize="@dimen/_8sdp"
+                android:id="@+id/lable02"
                 android:textColor="@android:color/holo_red_dark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -130,6 +145,7 @@
 
             <TextView
                 android:textSize="@dimen/_8sdp"
+                android:id="@+id/lable03"
                 android:textColor="@android:color/holo_red_dark"
                 android:layout_alignParentBottom="true"
                 android:layout_width="wrap_content"
@@ -140,6 +156,7 @@
                 android:layout_marginTop="@dimen/_15sdp"></TextView>
 
             <RelativeLayout
+                android:id="@+id/ly03"
                 android:layout_alignParentLeft="true"
                 android:layout_width="@dimen/_95sdp"
                 android:layout_centerVertical="true"
@@ -162,6 +179,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/ly02"
                 android:layout_centerInParent="true"
                 android:layout_width="@dimen/_150sdp"
                 android:layout_height="@dimen/_150sdp"
@@ -193,6 +211,7 @@
             </Button>
 
             <RelativeLayout
+                android:id="@+id/ly01"
                 android:layout_alignParentRight="true"
                 android:layout_width="@dimen/_95sdp"
                 android:layout_centerVertical="true"

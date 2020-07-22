@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 30
+    buildToolsVersion '30.0.1'
 
     defaultConfig {
         applicationId "lk.sanoj.cyberyakku.automaticmr"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 2
-        versionName "2.0"
+        versionCode 3
+        versionName "3.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,4 +40,5 @@ dependencies {
     implementation 'cz.msebera.android:httpclient:4.4.1.2'
     implementation 'org.jsoup:jsoup:1.11.3'
     implementation 'com.github.f0ris.sweetalert:library:1.6.2'
+    implementation 'com.github.jtv7:RippleSwitch:1.0'
 }

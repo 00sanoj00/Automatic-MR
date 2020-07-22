@@ -2,6 +2,7 @@ package lk.sanoj.cyberyakku.automaticmr;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
 import android.content.ClipboardManager;
@@ -9,9 +10,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
@@ -19,13 +23,20 @@ import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.jtv7.rippleswitchlib.RippleSwitch;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.zanjou.http.debug.Logger;
 import com.zanjou.http.request.Request;
@@ -39,7 +50,7 @@ import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class dashbord extends AppCompatActivity {
+public class dashbord extends AppCompatActivity implements RippleSwitch.OnCheckedChangeListener {
     private static final String TAG = "dashbord";
     private Button setting,service,stopservce,loggercopy,loggerclear;
     private TextView Simmodeview,maintimer,simonetimercount,simtowtimercount;
@@ -67,15 +78,69 @@ public class dashbord extends AppCompatActivity {
     private int sim1coun = 1;
     private int sim2coun = 1;
     ///////////////////////////////////////////
+    private RippleSwitch rs;
+    private LinearLayout mainlayot;
+    private CardView one,tow,tree;
+    private TextView lable1,lable2,lable3;
+    private RelativeLayout ly1,ly2,ly3;
+    private String UIMODE;
+    private CheckBox chone;
+    private MediaPlayer mySong;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashbord);
+        rs = findViewById(R.id.rippleSwitch);
 
         getmessage();
         statesget();
+
+        /**Screen Allways on setup checkbox button install*/
+            chone = findViewById(R.id.checkBox2);
+        /**Screen Allways on setup checkbox button install*/
+
+        /**add song*/
+        mySong= MediaPlayer.create(dashbord.this,R.raw.hud);
+        mySong.setLooping(true);
+        mySong.setVolume(0,0);
+        mySong.start();
+        /**add song*/
+
+        /**UIMOD button true fals setup*/
+        try{
+           SharedPreferences prefs = dashbord.this.getSharedPreferences("MyPrefsFile", MODE_PRIVATE);
+           String UIMODEssetButton = prefs.getString("uimods","");
+           if(UIMODEssetButton.equals("dks")){
+               rs.setChecked(true);
+           }else{
+               rs.setChecked(false);
+           }
+        }catch (Exception IOPU){
+
+        }
+        /**UIMOD button true fals setup*/
+
+        /**change dark modes*/
+        try {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    SharedPreferences prefs = dashbord.this.getSharedPreferences("MyPrefsFile", MODE_PRIVATE);
+                    UIMODE = prefs.getString("uimods","");
+                    if(UIMODE.equals("lgs")){
+                        lightmode();
+                    }else if(UIMODE.equals("dks")){
+                        drakmod();
+                    }else{
+                        lightmode();
+                    }
+
+                }
+            }, 1500);
+        }catch (Exception UIOP){}
+        /**change dark modes*/
 
         //////////////////button_head/////////////////
         setting = findViewById(R.id.setting);
@@ -104,6 +169,7 @@ public class dashbord extends AppCompatActivity {
             String getsim1url = prefs.getString("SIM1UR", "");
             String getsim2url = prefs.getString("SIM2UR", "");
             String getdevices = prefs.getString("DEVICES", ua);
+
             int gettime = prefs.getInt("TIME", 200);
 
             STsim1auth = getsim1auth;
@@ -113,10 +179,55 @@ public class dashbord extends AppCompatActivity {
             STDevices = getdevices;
             STtime = gettime;
             Simmodeview.setText(simmodeset);
+
+
+
+
+
         }catch (Exception NML){
 
         }
         ///////////////////////////////////////////////
+
+        /**rippleSwitch*/
+
+        rs.setOnCheckedChangeListener(dashbord.this);
+            /**install*/
+            mainlayot = findViewById(R.id.mainlayout);
+            one = findViewById(R.id.card_view0);
+            tow = findViewById(R.id.card_view2);
+            tree = findViewById(R.id.card_view3);
+            lable1 = findViewById(R.id.lable01);
+            lable2 = findViewById(R.id.lable02);
+            lable3 = findViewById(R.id.lable03);
+            ly1 = findViewById(R.id.ly01);
+            ly2 = findViewById(R.id.ly02);
+            ly3 = findViewById(R.id.ly03);
+            /**install*/
+        /**rippleSwitch*/
+
+
+        chone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(((CompoundButton) view).isChecked()){
+                    try{
+                        WindowManager.LayoutParams lp = getWindow().getAttributes();
+                        lp.screenBrightness = 2 / 100.0f;
+                        getWindow().setAttributes(lp);
+                    }catch (Exception UIY){}
+                    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                } else {
+                    try{
+                        WindowManager.LayoutParams lp = getWindow().getAttributes();
+                        lp.screenBrightness = 50 / 100.0f;
+                        getWindow().setAttributes(lp);
+                    }catch (Exception UIY){}
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                }
+            }
+        });
+
 
         /////////////GetSim Mode//////////////////////
         getsimmod = Simmodeview.getText().toString();
@@ -124,7 +235,7 @@ public class dashbord extends AppCompatActivity {
 
         ///////////////mainTextAppend////////////
         log.setText(currunttime+"Start AutomaticMR"+"\n");
-        log.append(currunttime+"Build 2.0 beta "+"\n");
+        log.append(currunttime+"Build 3.0 Stable "+"\n");
         log.append(currunttime+ "Status: Waiting for network"+"\n");
         if(getsimmod.equals("Sim Mode: Not config")){
             log.append(currunttime+"Need Setup , Press Setting"+"\n");
@@ -695,7 +806,7 @@ public class dashbord extends AppCompatActivity {
     }
     private void statesget() {
 
-        Request request = Request.create("https://raw.githubusercontent.com/00sanoj00/00sanoj00.github.io/master/automaicmrv2/appstatus.json");
+        Request request = Request.create("https://raw.githubusercontent.com/00sanoj00/00sanoj00.github.io/master/automaicmrv3/appstatus.json");
         request.setMethod(Request.GET)
                 .setLogger(new Logger(Logger.ERROR))
                 .setRequestListener(new RequestListener() {
@@ -739,7 +850,7 @@ public class dashbord extends AppCompatActivity {
     }
     private void getmessage() {
 
-        Request request = Request.create("https://raw.githubusercontent.com/00sanoj00/00sanoj00.github.io/master/automaicmrv2/deactivemessage.json");
+        Request request = Request.create("https://raw.githubusercontent.com/00sanoj00/00sanoj00.github.io/master/automaicmrv3/deactivemessage.json");
         request.setMethod(Request.GET)
                 .setLogger(new Logger(Logger.ERROR))
                 .setRequestListener(new RequestListener() {
@@ -851,4 +962,96 @@ public class dashbord extends AppCompatActivity {
                 .show();
 
     }
+
+
+    @Override
+    public void onCheckChanged(boolean b) {
+        if(rs.isChecked()){
+            try{
+                drakmod();
+                SharedPreferences.Editor editor = getSharedPreferences("MyPrefsFile", MODE_PRIVATE).edit();
+                editor.putString("uimods", "dks");
+                editor.apply();
+            }catch (Exception IO){}
+        }else{
+            try{
+                lightmode();
+                SharedPreferences.Editor editor = getSharedPreferences("MyPrefsFile", MODE_PRIVATE).edit();
+                editor.putString("uimods", "lgs");
+                editor.apply();
+            }catch (Exception IO){}
+
+        }
+    }
+    public void drakmod(){
+        try {
+            rs.setChecked(true);
+        }catch (Exception i){
+
+        }
+        mainlayot.setBackgroundColor(getResources().getColor(R.color.darkmainlayout));
+        one.setCardBackgroundColor(getResources().getColor(R.color.drakcardview));
+        tow.setCardBackgroundColor(getResources().getColor(R.color.drakcardview));
+        tree.setCardBackgroundColor(getResources().getColor(R.color.drakcardview));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.darkmainlayout));
+            window.setNavigationBarColor(getResources().getColor(R.color.darkmainlayout));
+        }
+        chone.setTextColor(getResources().getColor(R.color.darktext));
+        showstatus.setTextColor(getResources().getColor(R.color.darktext));
+        Simmodeview.setTextColor(getResources().getColor(R.color.darktext));
+        log.setTextColor(getResources().getColor(R.color.darktext));
+        maintimer.setTextColor(getResources().getColor(R.color.darktext));
+        simonetimercount.setTextColor(getResources().getColor(R.color.darktext));
+        simtowtimercount.setTextColor(getResources().getColor(R.color.darktext));
+        lable1.setTextColor(getResources().getColor(R.color.darktext));
+        lable2.setTextColor(getResources().getColor(R.color.darktext));
+        lable3.setTextColor(getResources().getColor(R.color.darktext));
+        setting.setBackgroundResource(R.drawable.ic_setting_dark);
+        stopservce.setBackgroundResource(R.drawable.ic_stop_dark);
+        loggercopy.setBackgroundResource(R.drawable.ic_portable_dark);
+        loggerclear.setBackgroundResource(R.drawable.ic_trash_dark);
+        service.setBackgroundResource(R.drawable.ic_ply_dark);
+        ly1.setBackgroundResource(R.drawable.newround_dark);
+        ly2.setBackgroundResource(R.drawable.newround_dark);
+        ly3.setBackgroundResource(R.drawable.newround_dark);
+    }
+    public void lightmode(){
+        try {
+            rs.setChecked(false);
+        }catch (Exception i){
+
+        }
+        mainlayot.setBackgroundColor(getResources().getColor(R.color.lightmainlayout));
+        one.setCardBackgroundColor(getResources().getColor(R.color.lightcardview));
+        tow.setCardBackgroundColor(getResources().getColor(R.color.lightcardview));
+        tree.setCardBackgroundColor(getResources().getColor(R.color.lightcardview));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.lightstatusnova));
+            window.setNavigationBarColor(getResources().getColor(R.color.lightstatusnova));
+        }
+        showstatus.setTextColor(getResources().getColor(R.color.lightstatussimmod));
+        Simmodeview.setTextColor(getResources().getColor(R.color.lightstatussimmod));
+        chone.setTextColor(getResources().getColor(R.color.lightstatusnova));
+        log.setTextColor(getResources().getColor(R.color.lightstatusnova));
+        maintimer.setTextColor(getResources().getColor(R.color.lightstatusnova));
+        simonetimercount.setTextColor(getResources().getColor(R.color.lightstatusnova));
+        simtowtimercount.setTextColor(getResources().getColor(R.color.lightstatusnova));
+        lable1.setTextColor(getResources().getColor(R.color.lightstatusnova));
+        lable2.setTextColor(getResources().getColor(R.color.lightstatusnova));
+        lable3.setTextColor(getResources().getColor(R.color.lightstatusnova));
+        setting.setBackgroundResource(R.drawable.ic_settings);
+        stopservce.setBackgroundResource(R.drawable.ic_stop);
+        loggercopy.setBackgroundResource(R.drawable.ic_portable);
+        loggerclear.setBackgroundResource(R.drawable.ic_trash);
+        service.setBackgroundResource(R.drawable.ic_ply);
+        ly1.setBackgroundResource(R.drawable.newround);
+        ly2.setBackgroundResource(R.drawable.newround);
+        ly3.setBackgroundResource(R.drawable.newround);
+    }
+
 }

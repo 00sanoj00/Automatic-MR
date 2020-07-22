@@ -7,6 +7,7 @@
     </style>
 
     <style name="sflash2" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor" tools:ignore="NewApi">@android:color/holo_red_dark</item>
         <item name="android:navigationBarColor" tools:ignore="NewApi">@android:color/holo_red_dark</item>
     </style>

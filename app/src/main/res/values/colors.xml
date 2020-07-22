@@ -143,4 +143,13 @@
     <color name="DarkBlue">#00008B</color>
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
+
+    <color name="darkmainlayout">#000000</color>
+    <color name="drakcardview">#2E2E2E</color>
+    <color name="darktext">#ffffff</color>
+
+    <color name="lightmainlayout">#F8EEEE</color>
+    <color name="lightstatusnova">@android:color/holo_red_dark</color>
+    <color name="lightcardview">#FFFFFF</color>
+    <color name="lightstatussimmod">#000000</color>
 </resources>
